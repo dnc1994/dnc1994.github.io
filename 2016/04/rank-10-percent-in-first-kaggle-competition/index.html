@@ -4,10 +4,10 @@
 
 
 <html class="theme-next muse" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -18,8 +18,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -38,7 +38,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5.1.4">
@@ -64,13 +64,13 @@
 
 
 
-  <meta name="keywords" content="Machine Learning, Data Science, Anime, Otaku, CMU, Google, Knowledge Sharing">
+  <meta name="keywords" content="Machine Learning, Data Science, Anime, Otaku, CMU, Google, Knowledge Sharing" />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Wille" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Wille" type="application/atom+xml" />
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://dnc1994.com/2016/04/rank-10-percent-in-first-kaggle-competition/">
+  <link rel="canonical" href="http://dnc1994.com/2016/04/rank-10-percent-in-first-kaggle-competition/"/>
 
 
 
@@ -167,7 +167,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Wille</span>
         <span class="logo-line-after"><i></i></span>
@@ -197,7 +197,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
           </a>
@@ -207,7 +207,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archives
           </a>
@@ -217,7 +217,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             Categories
           </a>
@@ -227,7 +227,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             About
           </a>
@@ -270,7 +270,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Linghao Zhang">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/uploads/asuka.png">
     </span>
 
@@ -306,7 +306,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -337,7 +337,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/04/rank-10-percent-in-first-kaggle-competition/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/rank-10-percent-in-first-kaggle-competition/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/rank-10-percent-in-first-kaggle-competition/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -504,7 +505,7 @@
 <p><img src="kaggle-guide-stacking-diagram.jpg" alt="Stacking"></p>
 <p>整个过程很像 Cross Validation。首先将训练数据分为 5 份，接下来一共 5 个迭代，每次迭代时，将 4 份数据作为 Training Set 对每个 Base Model 进行训练，然后在剩下一份 Hold-out Set 上进行预测。<strong>同时也要将其在测试数据上的预测保存下来。</strong>这样，每个 Base Model 在每次迭代时会对训练数据的其中 1 份做出预测，对测试数据的全部做出预测。5 个迭代都完成以后我们就获得了一个 <code>#训练数据行数 x #Base Model 数量</code> 的矩阵，这个矩阵接下来就作为第二层的 Model 的训练数据。当第二层的 Model 训练完以后，将之前保存的 Base Model 对测试数据的预测（<strong>因为每个 Base Model 被训练了 5 次，对测试数据的全体做了 5 次预测，所以对这 5 次求一个平均值，从而得到一个形状与第二层训练数据相同的矩阵</strong>）拿出来让它进行预测，就得到最后的输出。</p>
 <p>这里给出我的实现代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ensemble</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_folds, stacker, base_models)</span>:</span></span><br><span class="line">        self.n_folds = n_folds</span><br><span class="line">        self.stacker = stacker</span><br><span class="line">        self.base_models = base_models</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit_predict</span><span class="params">(self, X, y, T)</span>:</span></span><br><span class="line">        X = np.array(X)</span><br><span class="line">        y = np.array(y)</span><br><span class="line">        T = np.array(T)</span><br><span class="line"></span><br><span class="line">        folds = list(KFold(len(y), n_folds=self.n_folds, shuffle=<span class="literal">True</span>, random_state=<span class="number">2016</span>))</span><br><span class="line"></span><br><span class="line">        S_train = np.zeros((X.shape[<span class="number">0</span>], len(self.base_models)))</span><br><span class="line">        S_test = np.zeros((T.shape[<span class="number">0</span>], len(self.base_models)))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, clf <span class="keyword">in</span> enumerate(self.base_models):</span><br><span class="line">            S_test_i = np.zeros((T.shape[<span class="number">0</span>], len(folds)))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j, (train_idx, test_idx) <span class="keyword">in</span> enumerate(folds):</span><br><span class="line">                X_train = X[train_idx]</span><br><span class="line">                y_train = y[train_idx]</span><br><span class="line">                X_holdout = X[test_idx]</span><br><span class="line">                <span class="comment"># y_holdout = y[test_idx]</span></span><br><span class="line">                clf.fit(X_train, y_train)</span><br><span class="line">                y_pred = clf.predict(X_holdout)[:]</span><br><span class="line">                S_train[test_idx, i] = y_pred</span><br><span class="line">                S_test_i[:, j] = clf.predict(T)[:]</span><br><span class="line"></span><br><span class="line">            S_test[:, i] = S_test_i.mean(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.stacker.fit(S_train, y)</span><br><span class="line">        y_pred = self.stacker.predict(S_test)[:]</span><br><span class="line">        <span class="keyword">return</span> y_pred</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ensemble</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_folds, stacker, base_models)</span>:</span></span><br><span class="line">        self.n_folds = n_folds</span><br><span class="line">        self.stacker = stacker</span><br><span class="line">        self.base_models = base_models</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit_predict</span><span class="params">(self, X, y, T)</span>:</span></span><br><span class="line">        X = np.array(X)</span><br><span class="line">        y = np.array(y)</span><br><span class="line">        T = np.array(T)</span><br><span class="line"></span><br><span class="line">        folds = list(KFold(len(y), n_folds=self.n_folds, shuffle=<span class="keyword">True</span>, random_state=<span class="number">2016</span>))</span><br><span class="line"></span><br><span class="line">        S_train = np.zeros((X.shape[<span class="number">0</span>], len(self.base_models)))</span><br><span class="line">        S_test = np.zeros((T.shape[<span class="number">0</span>], len(self.base_models)))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, clf <span class="keyword">in</span> enumerate(self.base_models):</span><br><span class="line">            S_test_i = np.zeros((T.shape[<span class="number">0</span>], len(folds)))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j, (train_idx, test_idx) <span class="keyword">in</span> enumerate(folds):</span><br><span class="line">                X_train = X[train_idx]</span><br><span class="line">                y_train = y[train_idx]</span><br><span class="line">                X_holdout = X[test_idx]</span><br><span class="line">                <span class="comment"># y_holdout = y[test_idx]</span></span><br><span class="line">                clf.fit(X_train, y_train)</span><br><span class="line">                y_pred = clf.predict(X_holdout)[:]</span><br><span class="line">                S_train[test_idx, i] = y_pred</span><br><span class="line">                S_test_i[:, j] = clf.predict(T)[:]</span><br><span class="line"></span><br><span class="line">            S_test[:, i] = S_test_i.mean(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.stacker.fit(S_train, y)</span><br><span class="line">        y_pred = self.stacker.predict(S_test)[:]</span><br><span class="line">        <span class="keyword">return</span> y_pred</span><br></pre></td></tr></table></figure>
 <p>获奖选手往往会使用比这复杂得多的 Ensemble，会出现三层、四层甚至五层，不同的层数之间有各种交互，还有将经过不同的 Preprocessing 和不同的 Feature Engineering 的数据用 Ensemble 组合起来的做法。但对于新手来说，稳稳当当地实现一个正确的 5-Fold Stacking 已经足够了。</p>
 <h3 id="Pipeline"><a href="#Pipeline" class="headerlink" title="*Pipeline"></a>*Pipeline</h3><p>可以看出 Kaggle 比赛的 Workflow 还是比较复杂的。尤其是 Model Selection 和 Ensemble。理想情况下，我们需要搭建一个高自动化的 Pipeline，它可以做到：</p>
 <ul>
@@ -645,7 +646,7 @@
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/uploads/donate-alipay.jpg" alt="Linghao Zhang Alipay">
+        <img id="alipay_qr" src="/uploads/donate-alipay.jpg" alt="Linghao Zhang Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -759,7 +760,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/uploads/asuka.png" alt="Linghao Zhang">
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/asuka.png"
+                alt="Linghao Zhang" />
             
               <p class="site-author-name" itemprop="name">Linghao Zhang</p>
               <p class="site-description motion-element" itemprop="description">Creating and Distilling Knowledge</p>
@@ -848,7 +851,7 @@
           
             <div class="cc-license motion-element" itemprop="license">
               <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
               </a>
             </div>
           
