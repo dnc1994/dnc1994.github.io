@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next muse" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning, Data Science, Anime, Otaku, CMU, Google, Knowledge Sharing" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wille" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="This blog has been migrated to linghao.io. Read this post on my new blog: https://linghao.io/notes/programming-beyond-practices/. Programming Beyond Practices by Gregory Brown is one of the most insig">
+<meta name="keywords" content="Machine Learning, Data Science, Anime, Otaku, CMU, Google, Knowledge Sharing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Notes] Programming Beyond Practices">
+<meta property="og:url" content="http://dnc1994.com/2018/07/notes-programming-beyond-practices/index.html">
+<meta property="og:site_name" content="Wille">
+<meta property="og:description" content="This blog has been migrated to linghao.io. Read this post on my new blog: https://linghao.io/notes/programming-beyond-practices/. Programming Beyond Practices by Gregory Brown is one of the most insig">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-03T00:41:56.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Notes] Programming Beyond Practices">
+<meta name="twitter:description" content="This blog has been migrated to linghao.io. Read this post on my new blog: https://linghao.io/notes/programming-beyond-practices/. Programming Beyond Practices by Gregory Brown is one of the most insig">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dnc1994.com/2018/07/notes-programming-beyond-practices/"/>
+
+
+
+
+
+  <title>[Notes] Programming Beyond Practices | Wille</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-121702790-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wille</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">最後に辿り着いた場所</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dnc1994.com/2018/07/notes-programming-beyond-practices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linghao Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/asuka.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wille">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Notes] Programming Beyond Practices</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T02:18:16-07:00">
+                2018-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/notes-programming-beyond-practices/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/notes-programming-beyond-practices/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  18
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>This blog has been migrated to <a href="https://linghao.io" target="_blank" rel="noopener">linghao.io</a>. Read this post on my new blog: <a href="https://linghao.io/notes/programming-beyond-practices/" target="_blank" rel="noopener">https://linghao.io/notes/programming-beyond-practices/</a>.</strong></p>
+<p><a href="http://shop.oreilly.com/product/0636920047391.do" target="_blank" rel="noopener"><em>Programming Beyond Practices</em></a> by Gregory Brown is one of the most insightful books I’ve read about software engineering. The book is consisted of 8 chapter-length stories that present a series of interesting topics that go beyond the sheer scope of programming.</p>
+<p>This post is a refined version of the notes I took while reading this book.</p>
+<a id="more"></a>
+<h2 id="Chapter-1-Using-Prototypes-to-Explore-Project-Ideas"><a href="#Chapter-1-Using-Prototypes-to-Explore-Project-Ideas" class="headerlink" title="Chapter 1: Using Prototypes to Explore Project Ideas"></a>Chapter 1: Using Prototypes to Explore Project Ideas</h2><p>This chapter discusses how exploratory programming techniques can be used to build and ship a meaningful proof of concept for a product idea within hours after development begins.</p>
+<ul>
+<li><p>Getting ideas out of a client’s head as quickly as you can</p>
+<ul>
+<li><p>Conversations and wireframes (rough sketches) can be useful, but exploratory programming soon follows.</p>
+</li>
+<li><p>By getting working software into the mix early in the process, product design becomes an interactive collaboration and thus create faster feedback loops.</p>
+</li>
+</ul>
+</li>
+<li><p>Start by understanding the needs behinds the project</p>
+<ul>
+<li><p>Ask questions that reveal the goals of the people involved to both validate your assumptions and get more context on how other people see the problem.</p>
+</li>
+<li><p>Use wireframes to clearly communicate the basic structure of an application without getting bogged down in style details. The goal is to set expectations about functionality.</p>
+</li>
+</ul>
+</li>
+<li><p>Set up a live test system as soon as you start coding</p>
+<ul>
+<li><p>The initial setup doesn’t need to be production-ready. It just needs to be suitable for collecting useful feedback.</p>
+</li>
+<li><p>To speed things up, massive underinvestment is the name of the game here and it requires skill to pull it off.</p>
+</li>
+<li><p>It’s important to keep yourself from overthinking, because not even the most simple things survive first contact with the customer.</p>
+</li>
+</ul>
+</li>
+<li><p>Discuss all defects, but be pragmatic about repairs</p>
+<ul>
+<li>It’s impossible to entirely guard yourself from making mistakes, but how you respond to them is critical.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Prototyping is about exploring a problem space, not building a finished product.</p>
+<ul>
+<li><p>Focus on the risky or unknown parts of your work.</p>
+</li>
+<li><p>Check your assumptions early and often.</p>
+</li>
+<li><p>Limit the scope of your work as much as possible.</p>
+</li>
+<li><p>Remember that prototypes are not proudction systems. Make notes about any simplifying assumptions you made for maintainability.</p>
+</li>
+<li><p>Make WIP features a bit rough on purpose to prevent others from thinking they’re ready to ship.</p>
+</li>
+</ul>
+</li>
+<li><p>Design features that make collecting feedback easy</p>
+<ul>
+<li><p>Figuring out the right balance of when to play fast and loose and when to tighten things up.</p>
+</li>
+<li><p>E.g. In a simple video recommendation system based on tags (artist, genre, etc), it pays to display a sidebar that lists tags and their scores. Make the tags clickable so that the user can interact with it to figure out how watching videos with a certain tag influences its score and change the recommendation behavior.</p>
+</li>
+<li><p>E.g. Build an “import from CSV” feature so that the user can explore more with their custom data.</p>
+</li>
+</ul>
+</li>
+<li><p>Encountering issues during prototyping is not a sign of a flawed process. It’s exactly what you should expect as a side effect of accelerated feedback loops. While they help you figure out how to build things faster, they also help you fail faster.</p>
+</li>
+</ul>
+<h2 id="Chapter-2-Spotting-Hidden-Dependencies-in-Incremental-Changes"><a href="#Chapter-2-Spotting-Hidden-Dependencies-in-Incremental-Changes" class="headerlink" title="Chapter 2: Spotting Hidden Dependencies in Incremental Changes"></a>Chapter 2: Spotting Hidden Dependencies in Incremental Changes</h2><p>This chapter discusses issues that can crop up whenever a production codebase is gradually extended to fit a new purpose.</p>
+<ul>
+<li><p>There’s no such thing as a standalone feature</p>
+<ul>
+<li><p>Don’t assume that a change is backward-compatible or safe just because it doesn’t explicitly modify existing features.</p>
+</li>
+<li><p>Pay attention to shared resources that live outside the codebase: storage mechanisms, processing capacity, databases, external services, libraries, user interfaces, etc. These tools form a “hidden dependency web” that can propagate side effects and failures between seemingly unrelated application features.</p>
+</li>
+<li><p>E.g. Suppose two seemingly independent Wiki sites share the same storage infrastructure. The first Wiki is only used by a few trusted admins, while the second Wiki is newly developed and made open to the public. An attack on the public Wiki could easily bring down the admin Wiki. This is an example of infrastructure-level dependency. </p>
+</li>
+<li><p>Use constraints and validations to help prevent local failures from causing global side effects. Also make sure to have good monitoring in place so that unexpected system failures are quickly noticed and dealt with.</p>
+</li>
+<li><p>E.g. Limit the number of pages allowed to be created on the public wiki.</p>
+</li>
+<li><p>E.g. Add monitoring to track Wiki page creation / deletion / editing and set up alerts for those events.</p>
+</li>
+</ul>
+</li>
+<li><p>If two features share a screen, they depend on each other</p>
+<ul>
+<li>E.g. Adding a sidebar with flexible width to a Wiki page could make the actual content stuffed into a tiny column when the title of sidebar becomes too long.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Avoid non-essential real-time data synchronization</p>
+<ul>
+<li>E.g. Suppose that you need to display 5 most visited Wiki pages. Querying those in real-time is wasteful. And external service intergration are often full of headaches. Instead, you can write a script that periodically calls the analytics API and updates the 5 pages in a caching layer. By doing so, you sidestep the need to add further configuration information or libraries to the main web app.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Look for problems when code is reused in a new context</p>
+<ul>
+<li><p>Watch out for context switches when reusing existing tools and resources. Any changes in scale, performance expectations, or privacy levels can lead to dangerous problems.</p>
+</li>
+<li><p>Focusing on superficial similarities of different use cases rather than their fundamental differences can cloud your judgement.</p>
+</li>
+<li><p>E.g. The admin Wiki uses a Markdown processor to render the page content, where editors are all trusted. But it’s certainly not safe for use by random individuals on the Internet.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chapter-3-Identifying-the-Pain-Points-of-Service-Integrations"><a href="#Chapter-3-Identifying-the-Pain-Points-of-Service-Integrations" class="headerlink" title="Chapter 3: Identifying the Pain Points of Service Integrations"></a>Chapter 3: Identifying the Pain Points of Service Integrations</h2><p>This chapter discusses some of the various ways that third-party systems can cause failures, as well as how flawed thinking about service integrations can lead to bad decision making.</p>
+<ul>
+<li><p>Plan for trouble when your needs are off the beaten path</p>
+<ul>
+<li><p>In theory, we should be approaching every third-party system with distrust until it is proven to be reliable. In practice, time and money constraints often cause us to drive faster than our headlights can see.</p>
+</li>
+<li><p>Be cautious when depending on an external service for something other than what it is well known for. If you can’t find many examples of others successfully using a service to solve similar problems to the ones you have, it is a sign that it may be at best unproven and at worst unsuitable for your needs.</p>
+</li>
+<li><p>Conduct smoke tests in such scenarios can help.</p>
+</li>
+</ul>
+</li>
+<li><p>Remember that external services might change or die</p>
+<ul>
+<li>The key difference between libraries and services: a library can only cause breaking changes if your codebase or supporting infrastructure is modified, but an external service can break or change behavior at any point in time as it involves a remote system that isn’t under your control.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Look for outdated mocks in tests when services change</p>
+<ul>
+<li><p>The presence of a decent test coverage can create an illusion of safety.</p>
+</li>
+<li><p>It’s possible that changes to a service dependency will render a mock object in tests outdated. When that happens the test result could be misleading.</p>
+</li>
+<li><p>Make sure that at least some of your tests run against live APIs of the services you depend upon.</p>
+</li>
+</ul>
+</li>
+<li><p>Expect maintenance headaches from poorly coded robots</p>
+<ul>
+<li>You don’t need to just worry about your own integrations, it’s also essential to pay attention to the uninvited guests who integrate with you.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Remember that there are no purely internal concerns</p>
+<ul>
+<li><p>A process can be well-intentioned but misguided or ill-executed.</p>
+</li>
+<li><p>Use every code review as an opportunity for a mini-audit of service dependencies — to evaluate testing strategy, to think through how failures will be handled, or to guard against misuse of resources.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chapter-4-Developing-a-Rigorous-Apporach-Toward-Problem-Solving"><a href="#Chapter-4-Developing-a-Rigorous-Apporach-Toward-Problem-Solving" class="headerlink" title="Chapter 4: Developing a Rigorous Apporach Toward Problem Solving"></a>Chapter 4: Developing a Rigorous Apporach Toward Problem Solving</h2><p>This chapter discusses several straightforward tactics for breaking down and solving challenging problems in a methodical fashion. You should go read the book if you’re interested in the specific puzzle used for illustration.</p>
+<ul>
+<li><p>Puzzles are awkward to use for developing practical coding skills but perfect for exploring general problem solving techniques.</p>
+</li>
+<li><p>Begin by gathering the facts and stating them plainly</p>
+<ul>
+<li>The raw materials of a problem description are often a scattered array of prose, examples, and reference materials. Make sense of it all by writing your own notes, then strip away noise until you are left with just the essential details.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Work part of the problem by hand before writing code</p>
+<ul>
+<li><p>Behind each new problem that you encounter, there is a collection of simple sub-problems that you already know how to solve. Keep breaking things down into chunks until you start to recognize what the pieces are made of.</p>
+</li>
+<li><p>Challenging problems are made up of many moving parts. To see how they fit together without getting bogged down in implementation details, work through partial solutions on paper before you begin writing code.</p>
+</li>
+</ul>
+</li>
+<li><p>Validate your input data before attempting to process it</p>
+<ul>
+<li>A valid set of rules operating on an invalid dataset can produce confusing results that are difficult to debug. Avoid the “garbage in, garbage out” effect by validating any source data before processing it.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Make use of deductive reasoning to check your work</p>
+</li>
+<li><p>Solve simple problems to understand more difficult ones</p>
+</li>
+</ul>
+<h2 id="Chapter-5-Design-Software-from-the-Bottom-Up"><a href="#Chapter-5-Design-Software-from-the-Bottom-Up" class="headerlink" title="Chapter 5: Design Software from the Bottom Up"></a>Chapter 5: Design Software from the Bottom Up</h2><p>This chapter discusses a step-by-step approach to bottom-up software design, and examine the tradeoffs of this way of working. The example here is <a href="https://en.wikipedia.org/wiki/Just-in-time_manufacturing" target="_blank" rel="noopener">just-in-time production workflow</a>. You should go read the book if you’re interested in pithy details of the whole approach.</p>
+<ul>
+<li><p>Identify the nouns and verbs of your problem space</p>
+<ul>
+<li>List a handful of important nouns and verbs in the problem space. Then look for the shortest meaningful sentence that you can construct from the words on that list. Use that as the guiding theme for the first feature you implement.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Begin by implementing a minimal slice of functionality</p>
+</li>
+<li><p>Avoid unnecessary temporal coupling between objects</p>
+<ul>
+<li>As you continue to add new functionality into your project, pay attention to the connections between objects. Favor designs that are flexible when it comes to both quantities and timing so that individual objects don’t impose artificial constraints on their collaborators.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Gradually extract reusable parts and protocols</p>
+<ul>
+<li>When extracting reusable objects and functions, look for fundamental building blocks that are unlikely to change much over time, rather than looking for superficial ways to reduce duplication of boilerplate code.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Experiment freely to discover hidden abstractions</p>
+<ul>
+<li>Deferred decision making is an important part of bottom-up design. You will come to discover missing abstractions in the system as you proceed.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Know where the bottom-up approach breaks down</p>
+<ul>
+<li><p>Take advantage of the emergent features that can arise when you reuse your basic building blocks to solve new problems. But watch out for excess complexity in the glue code between objects: messy integration points are a telltale sign that a bottom-up design style is being stretched beyond its comfort zone.</p>
+</li>
+<li><p>Top-down design and bottom-up design work like a spiral. Bottom-up design is good for exploring new areas and keeps things simple as you get some software up and running. When you hit dead ends or rough patches, then top-down mode is useful for considering the bigger picture and how to unify the connections between things.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chapter-6-Data-Modeling-in-an-Imperfect-World"><a href="#Chapter-6-Data-Modeling-in-an-Imperfect-World" class="headerlink" title="Chapter 6: Data Modeling in an Imperfect World"></a>Chapter 6: Data Modeling in an Imperfect World</h2><p>This chapter discusses how small adjustments to the basic building blocks of a data model can fundamentally change how people interact with a system for the better.</p>
+<ul>
+<li><p>Decouple conceptual modeling from physical modeling</p>
+<ul>
+<li><p>In a system with messy data sources, it’s often better to preserve data in its raw form rather than attempting to transform it immediately into structures that closely map to domain-specific concepts. This way you get to keep some degree of flexibility by not imposing too much structure at the physical data modeling level. You can always process raw data into whatever form you’d like, but extracting that same information from complex models can be needlessly complicated.</p>
+</li>
+<li><p>E.g. In a time-tracking application, don’t model a work session as a pair of two punches. Instead, only record the raw punch data and use them to infer work sessions on-the-fly as needed.</p>
+</li>
+</ul>
+</li>
+<li><p>Design an explicit model for tracking data changes</p>
+<ul>
+<li><p>Reduce incidental complexity as much as possible by minimizing mutable state.</p>
+</li>
+<li><p>As you develop a data model, think through the ways data will be presented, queried, and modified over time.</p>
+</li>
+<li><p>Make it easy to preview, annotate, approve, audit, and revert transactional data changes in a human-friendly way. Implementing this type of workflow involves writing custom code rather than relying on pre-built libraries.</p>
+</li>
+<li><p>Applying the event sourcing pattern in your data models can help simplify things.</p>
+</li>
+</ul>
+</li>
+<li><p>Understand how Conway’s Law influences data management practices</p>
+<ul>
+<li><p>Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations – Melvin Conway.</p>
+</li>
+<li><p>Design data management workflows that respect and support the organizational culture of the people using your software. Otherwise the system could be crushed under the weight of a thousand workarounds.</p>
+</li>
+</ul>
+</li>
+<li><p>Remember that workflow design and data modeling go hand in hand</p>
+</li>
+</ul>
+<h2 id="Chapter-7-Gradual-Process-Improvement-as-an-Antidote-for-Overcommitment"><a href="#Chapter-7-Gradual-Process-Improvement-as-an-Antidote-for-Overcommitment" class="headerlink" title="Chapter 7: Gradual Process Improvement as an Antidote for Overcommitment"></a>Chapter 7: Gradual Process Improvement as an Antidote for Overcommitment</h2><p>This chapter discusses some common anti-patterns that lead to struggles in software project management, and how incremental process improvements at all levels can alleviate some of those pains.</p>
+<ul>
+<li><p>Respond to unexpected failures with swiftness and safety</p>
+<ul>
+<li>When dealing with system-wide outages, disable or degrade features as needed to get your software back to a usable state as quickly as possible. Proper repairs to the broken parts can come later, once the immediate pressure has been relieved.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Identify and analyze operational bottlenecks</p>
+</li>
+<li><p>Pay attention to the economic tradeoffs of your work</p>
+<ul>
+<li><p>Look for areas where you are overcommitted and constrain them with reasonable budgets, so that you can free up time to spend on other work. Don’t rely solely on intuition for these decisions; use “back of the napkin” calculations to consider the economics of things as well.</p>
+</li>
+<li><p>E.g. Integrations with a whole list of advertising services takes up much time of the development. Yet the data shows that top 8 integrations alreay covers over 80% of growth.</p>
+</li>
+<li><p>Set a fixed limit on capacity (say 20%) that can be allocated to work on integrations each month. Simple time budgeting is a powerful tool for limiting the impact of high-risk areas of a project. It also encourages more careful prioritization and cost-benefit analysis.</p>
+</li>
+<li><p>Audit less popular integrations and decide what level of support to offer.</p>
+</li>
+</ul>
+</li>
+<li><p>Reduce waste by limiting work in progress</p>
+<ul>
+<li><p>Removing one bottleneck in a process will naturally cause another one to become visible.</p>
+</li>
+<li><p>Don’t get obsessed with the idea of catching up with the roadmap which is created before you ran into growing pains, as it could throw you back in a tough spot again.</p>
+</li>
+<li><p>Remember that unshipped code is not an asset; it’s perishable inventory with a cost of carry.</p>
+</li>
+<li><p>Help everyone in your projects understand this by focusing on what valuable work gets shipped in a given time period, rather than trying to make sure each person on the team stays busy.</p>
+</li>
+</ul>
+</li>
+<li><p>Make the whole greater than the sum of its parts</p>
+<ul>
+<li>When collaborating with someone who works in a different role than your own, try to communicate in ways they can relate to.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chapter-8-The-Future-of-Software-Development"><a href="#Chapter-8-The-Future-of-Software-Development" class="headerlink" title="Chapter 8: The Future of Software Development"></a>Chapter 8: The Future of Software Development</h2><p>This chapter is basically an imagination of what programming would look like in a future where the technology has advanced to a extent that we could focus purely on problem solving and communication rather than writing code.</p>
+<p>There isn’t any takeaways in this chapter. You should go read the book if you’re interested in author’s depiction of the future. Instead, I’d like to quote some of author’s ending remarks to end this post.</p>
+<blockquote>
+<p>Although the field of software development has a long way to go, I do expect things will get better in the years to come. It’s true that some folks among us are here solely for the tools, the code, the intellectual challenge of it all. But for the rest of us, that’s a matter of necessity and the environment we work in, not a defining characteristic of who we are.</p>
+<p>My fundamental belief is that programmers are no less concerned for human interests than anyone else in the world; it’s just hard to make that your main focus in life when you spend a good portion of your day chasing down a missing semicolon, reading source code for an undocumented library, or staring at a binary dump of some text that you suspect has been corrupted by a botched Unicode conversion.  </p>
+<p>And my great hope is that if we fight against the influence of our rough, low-level, tedious tools and gradually replace them with things that make us feel closer to the outcome of our work, then our tech-centric industry focus will shift sharply and permanently to a humancentric outlook.</p>
+</blockquote>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.sans.org/top25-software-errors" target="_blank" rel="noopener">CWE/SANS TOP 25 Most Dangerous Software Errors</a></li>
+<li><a href="https://practicingruby.com/articles/information-anatomy" target="_blank" rel="noopener">The anatomy of information in software systems</a></li>
+<li><a href="http://connascence.io/" target="_blank" rel="noopener">Connascence</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing" target="_blank" rel="noopener">Event Sourcing</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Theory_of_constraints" target="_blank" rel="noopener">Theory of constraints</a></li>
+<li><a href="https://en.wikipedia.org/wiki/5_Whys" target="_blank" rel="noopener">Five Whys</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Buy me an Asahi beer :)</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/donate-alipay.jpg" alt="Linghao Zhang Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/how-to-improve-your-english/" rel="next" title="如何提高英语姿势水平">
+                <i class="fa fa-chevron-left"></i> 如何提高英语姿势水平
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/notes-steven-pinker-linguistics-style-writing/" rel="prev" title="[Notes] Steven Pinker - Linguistics, Style and Writing in the 21st Century">
+                [Notes] Steven Pinker - Linguistics, Style and Writing in the 21st Century <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/asuka.png"
+                alt="Linghao Zhang" />
+            
+              <p class="site-author-name" itemprop="name">Linghao Zhang</p>
+              <p class="site-description motion-element" itemprop="description">Creating and Distilling Knowledge</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hi@linghao.io" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dnc1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/linghaozh" target="_blank" title="LinkedIn">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://t.me/linghao" target="_blank" title="Telegram">
+                      
+                        <i class="fa fa-fw fa-telegram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/instante_42" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.instagram.com/instante_42" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shud.in/about/" title="Shu Ding" target="_blank">Shu Ding</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://dsdshcym.github.io/blog/" title="Yiming Chen" target="_blank">Yiming Chen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://taineleau.me/" title="Danlu Chen" target="_blank">Danlu Chen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://endle.github.io/" title="Zhenbo Li" target="_blank">Zhenbo Li</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1-Using-Prototypes-to-Explore-Project-Ideas"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1: Using Prototypes to Explore Project Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Spotting-Hidden-Dependencies-in-Incremental-Changes"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: Spotting Hidden Dependencies in Incremental Changes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-Identifying-the-Pain-Points-of-Service-Integrations"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3: Identifying the Pain Points of Service Integrations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4-Developing-a-Rigorous-Apporach-Toward-Problem-Solving"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4: Developing a Rigorous Apporach Toward Problem Solving</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5-Design-Software-from-the-Bottom-Up"><span class="nav-number">5.</span> <span class="nav-text">Chapter 5: Design Software from the Bottom Up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6-Data-Modeling-in-an-Imperfect-World"><span class="nav-number">6.</span> <span class="nav-text">Chapter 6: Data Modeling in an Imperfect World</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7-Gradual-Process-Improvement-as-an-Antidote-for-Overcommitment"><span class="nav-number">7.</span> <span class="nav-text">Chapter 7: Gradual Process Improvement as an Antidote for Overcommitment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8-The-Future-of-Software-Development"><span class="nav-number">8.</span> <span class="nav-text">Chapter 8: The Future of Software Development</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">9.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linghao Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://wille-lhz.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://dnc1994.com/2018/07/notes-programming-beyond-practices/';
+          this.page.identifier = '2018/07/notes-programming-beyond-practices/';
+          this.page.title = '[Notes] Programming Beyond Practices';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wille-lhz.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

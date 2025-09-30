@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next muse" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning, Data Science, Anime, Otaku, CMU, Google, Knowledge Sharing" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wille" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="This blog has been migrated to linghao.io. Read this post on my new blog: https://linghao.io/notes/the-effective-engineer/. Starting from “time is our most limited resource”, The Effective Engineer by">
+<meta name="keywords" content="Machine Learning, Data Science, Anime, Otaku, CMU, Google, Knowledge Sharing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Notes] The Effective Engineer">
+<meta property="og:url" content="http://dnc1994.com/2018/10/notes-the-effective-engineer/index.html">
+<meta property="og:site_name" content="Wille">
+<meta property="og:description" content="This blog has been migrated to linghao.io. Read this post on my new blog: https://linghao.io/notes/the-effective-engineer/. Starting from “time is our most limited resource”, The Effective Engineer by">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://dnc1994.com/2018/10/notes-the-effective-engineer/quadrants.png">
+<meta property="og:updated_time" content="2019-06-03T00:41:45.135Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Notes] The Effective Engineer">
+<meta name="twitter:description" content="This blog has been migrated to linghao.io. Read this post on my new blog: https://linghao.io/notes/the-effective-engineer/. Starting from “time is our most limited resource”, The Effective Engineer by">
+<meta name="twitter:image" content="http://dnc1994.com/2018/10/notes-the-effective-engineer/quadrants.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dnc1994.com/2018/10/notes-the-effective-engineer/"/>
+
+
+
+
+
+  <title>[Notes] The Effective Engineer | Wille</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-121702790-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wille</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">最後に辿り着いた場所</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dnc1994.com/2018/10/notes-the-effective-engineer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linghao Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/asuka.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wille">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Notes] The Effective Engineer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-16T19:35:56-07:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/notes-the-effective-engineer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/notes-the-effective-engineer/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  40
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>This blog has been migrated to <a href="https://linghao.io" target="_blank" rel="noopener">linghao.io</a>. Read this post on my new blog: <a href="https://linghao.io/notes/the-effective-engineer/" target="_blank" rel="noopener">https://linghao.io/notes/the-effective-engineer/</a>.</strong></p>
+<p>Starting from “time is our most limited resource”, <a href="https://www.effectiveengineer.com/book" target="_blank" rel="noopener"><em>The Effective Engineer</em></a> by Edmond Lau first establishes the methodology of using “leverage” to guide our actions. The book then, from multiple angles, discusses how to become a more effective engineer by focusing on high-leverage activities that produce a disproportionately high impact for a relatively small time investment. Ranging from adopting mindsets, actual execution, to building long-term values, topics involved are complemented with ample examples within the industry. Much content are easily generalizable to areas beyond software engineering as well. A must-read for software engineers.</p>
+<p>This post is a refined version of the notes I took while reading this book.</p>
+<a id="more"></a>
+<h2 id="Part-I-Adopt-the-Right-Mindsets"><a href="#Part-I-Adopt-the-Right-Mindsets" class="headerlink" title="Part I: Adopt the Right Mindsets"></a>Part I: Adopt the Right Mindsets</h2><h3 id="1-Focus-on-High-Leverage-Activities"><a href="#1-Focus-on-High-Leverage-Activities" class="headerlink" title="1. Focus on High-Leverage Activities"></a>1. Focus on High-Leverage Activities</h3><h4 id="Use-leverage-to-measure-your-engineering-effectiveness"><a href="#Use-leverage-to-measure-your-engineering-effectiveness" class="headerlink" title="Use leverage to measure your engineering effectiveness"></a>Use leverage to measure your engineering effectiveness</h4><p>Leverage = Impact Produced / Time Invested</p>
+<p>Leverage is critical because time is your most limited resource.</p>
+<p>Pareto principle: 80% impact from 20% work – high-leverage activities that produce a disproportionately high impact for a relatively small time investment.</p>
+<h4 id="Systematically-increase-the-leverage-of-your-time"><a href="#Systematically-increase-the-leverage-of-your-time" class="headerlink" title="Systematically increase the leverage of your time"></a>Systematically increase the leverage of your time</h4><p>Three ways to increase your leverage:</p>
+<ul>
+<li>Reducing time</li>
+<li>Increasing output</li>
+<li>Shifting to higher-leverage activities</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Attending meetings<ul>
+<li>Defaulting to a half-hour meeting instead of a one-hour meeting</li>
+<li>Prepare an agenda and a set of goals</li>
+<li>Replace the in-person meeting with email discussion if possible</li>
+</ul>
+</li>
+<li>Developing a customer-facing feature<ul>
+<li>Automate parts of the development / testing process</li>
+<li>Prioritize tasks</li>
+<li>Use knowledge about customers to understand whether there’s another feature you could be working on</li>
+</ul>
+</li>
+<li>Fixing bottlenecks in a web application<ul>
+<li>Learn to effectively use a profiling tool</li>
+<li>Measure both performance and visit frequency so you can address the bottlenecks that affect the most traffic first</li>
+<li>Design performant software from the outset so that speed is prioritized as a feature instead of a bug to be fixed</li>
+</ul>
+</li>
+</ul>
+<h4 id="Focus-your-effort-on-leverage-points"><a href="#Focus-your-effort-on-leverage-points" class="headerlink" title="Focus your effort on leverage points"></a>Focus your effort on leverage points</h4><p>Don’t confuse high-leverage activities with easy wins. Many high-leverage activities require consistent applications of effort over long time periods to achieve high impact.</p>
+<p>Find leverage points, establish high-leverage habits.</p>
+<h3 id="2-Optimize-for-Learning"><a href="#2-Optimize-for-Learning" class="headerlink" title="2. Optimize for Learning"></a>2. Optimize for Learning</h3><h4 id="Adopt-a-growth-mindset"><a href="#Adopt-a-growth-mindset" class="headerlink" title="Adopt a growth mindset"></a>Adopt a growth mindset</h4><ul>
+<li>Fixed mindset: humans are born with a predetermined amount of intelligence</li>
+<li>Growth mindset: humans can cultivate and grow their intelligence and skills through effort</li>
+</ul>
+<p>Own your story. Instead of apologizing for where your resume doesn’t line up, take control of the parts that are within your sphere of influence.</p>
+<h4 id="Invest-in-your-learning-rate"><a href="#Invest-in-your-learning-rate" class="headerlink" title="Invest in your learning rate"></a>Invest in your learning rate</h4><p>Lessons from compound interest:</p>
+<ol>
+<li>Compounding leads to an exponential growth curve</li>
+<li>The earlier compounding starts, the sooner you hit the region of rapid growth and the faster you can reap its benefits</li>
+<li>Even small deltas in the interest rate can make massive differences in the long run</li>
+</ol>
+<p>When companies pay you for cushy and unchallenging 9-to-5 jobs, what they are actually doing is paying you to accept a much lower intellectual growth rate.</p>
+<p>Treat yourself like a startup. Startups initially prioritize learning over profitability to increase their chances of success.</p>
+<p>You would rather invest your financial assets in accounts that pay high interest rates, not low ones. Why would you treat your time – your most limited asset – any differently?</p>
+<h4 id="Seek-work-environments-conducive-to-learning"><a href="#Seek-work-environments-conducive-to-learning" class="headerlink" title="Seek work environments conducive to learning"></a>Seek work environments conducive to learning</h4><p>One of the most powerful leverage points for increasing our learning rate is our choice of work environment – because we spend so much time at work.</p>
+<p>Factors to consider:</p>
+<ul>
+<li>Fast growth. When the number of problems to solve exceeds available resources, there are ample opportunities to make a big impact. A lack of growth, on the other hand, leads to stagnation and politics.</li>
+<li>Training.</li>
+<li>Openness.</li>
+<li>Pace.</li>
+<li>People.</li>
+<li>Autonomy. The freedom to choose what to work on and how to do it drives our ability to learn.</li>
+</ul>
+<h4 id="Capitalize-on-opportunities-on-the-job-to-develop-new-skills"><a href="#Capitalize-on-opportunities-on-the-job-to-develop-new-skills" class="headerlink" title="Capitalize on opportunities on the job to develop new skills"></a>Capitalize on opportunities on the job to develop new skills</h4><p>Borrow the idea of 20% time from Google, but take it in one- or two-hour chunks each day, because you can then make a daily habit out of improving your skills.</p>
+<p>Gain experience in adjacent disciplines:</p>
+<ul>
+<li>For product engineers: product management, user research, backend engineering</li>
+<li>For infrastructure engineers: machine learning, database internals, web development</li>
+<li>For growth engineers: data science, marketing, behavioral psychology.</li>
+</ul>
+<p>Tips:</p>
+<ul>
+<li><strong>Study code for core abstractions written by the best engineers at your company.</strong></li>
+<li>Write more code.</li>
+<li><strong>Go through any technical, educational material available internally.</strong></li>
+<li>Master the programming language that you use.</li>
+<li>Send your code reviews to the harshest critics.</li>
+<li>Enroll in classes on areas where you want to improve.</li>
+<li>Participate in design discussions of projects you’re interested in.</li>
+<li><strong>Work on a diversity of projects.</strong> Interleaving different projects can tech you what problems are common across projects and what might just be artifacts of your current ones.</li>
+<li>Make sure you’re on a team with at least a few senior engineers whom you can learn from.</li>
+<li><strong>Jump fearlessly into code you don’t know.</strong> Highly correlated to engineering success.</li>
+</ul>
+<h4 id="Always-be-learning-even-when-outside-of-the-workplace"><a href="#Always-be-learning-even-when-outside-of-the-workplace" class="headerlink" title="Always be learning, even when outside of the workplace"></a>Always be learning, even when outside of the workplace</h4><p>Some skills we learn could be cross-functional and help our engineering work. For example, increasing your comfort level in conversing with strangers can help with meeting and interviewing. Other skills might not translate directly into engineering benefits, but the practice of adopting a growth mindset toward them makes us better learners and more willing to stretch beyond our comfort zone.</p>
+<p>Continual learning is inextricably linked with increased happiness.</p>
+<p>Tips:</p>
+<ul>
+<li>Learn new programming languages and frameworks.</li>
+<li>Invest in skills that are in high demand.</li>
+<li><strong>Read books.</strong></li>
+<li>Join a discussion group.</li>
+<li>Attend talks, conferences, and meetups.</li>
+<li>Build and maintain a strong network of relationships.</li>
+<li>Follow bloggers who teach.</li>
+<li><strong>Write to teach</strong> – Feynman’s technique.</li>
+<li><strong>Tinker on side projects.</strong> Creativity stems from combining existing and often disparate ideas in new ways.</li>
+<li>Pursue what you love.</li>
+</ul>
+<h3 id="3-Prioritize-Regularly"><a href="#3-Prioritize-Regularly" class="headerlink" title="3. Prioritize Regularly"></a>3. Prioritize Regularly</h3><h4 id="Track-and-review-to-dos-in-a-single-easily-accessible-list"><a href="#Track-and-review-to-dos-in-a-single-easily-accessible-list" class="headerlink" title="Track and review to-dos in a single, easily accessible list"></a>Track and review to-dos in a single, easily accessible list</h4><p>The human brain is optimized for processing and not for storage. The average brain can actively hold on 7 +/- 2 items. Expending effort on remembering things reduces our attention, impairs our decision-making abilities, and even hurts our physical performance.</p>
+<p>To-do lists should be 1) a canonical representation of our work and 2) easily accessible.</p>
+<p>Instead of accurately computing the leverage of each task (which is incredibly difficult), compile a small number of goals to complete. Pick initial tasks towards these goals, and then make a pairwise comparison between what you’re currently doing and what else is on your to-do list. Continuously shift your top priorities towards the ones with the highest leverage.</p>
+<h4 id="Focus-on-what-directly-produces-value"><a href="#Focus-on-what-directly-produces-value" class="headerlink" title="Focus on what directly produces value"></a>Focus on what directly produces value</h4><p>Activity is not necessarily production. Activities like writing status reports, organizing things, creating organizational systems, recording things multiple times, going to meetings, replying to low-priority communications only have a weak and indirect connection to creating value.</p>
+<p>Once you’re producing results, few people will complain about declined meetings, slow email response times, or even non-urgent bugs not being fixed.</p>
+<p>Defer and ignore tasks that don’t directly produce value.</p>
+<h4 id="Focus-on-the-important-and-non-urgent"><a href="#Focus-on-the-important-and-non-urgent" class="headerlink" title="Focus on the important and non-urgent"></a>Focus on the important and non-urgent</h4><p><img src="quadrants.png" alt="Quadrants"></p>
+<p>Urgency should not be confused with importance. Put first things first.</p>
+<p>Label to-dos from 1 to 4 based on which quadrant the activity fall under.</p>
+<p>Oftentimes, the root cause of a Quadrant 1 problem is an underinvestment in a Quadrant 2 activity.</p>
+<p>The act of prioritization is itself a Quadrant 2 activity, whose important often gets overlooked because it’s rarely urgent. Prioritize the act of prioritization.</p>
+<h4 id="Protect-your-schedule"><a href="#Protect-your-schedule" class="headerlink" title="Protect your schedule"></a>Protect your schedule</h4><p>Engineers need longer and more contiguous blocks of time to be productive than many other professionals.</p>
+<p>Managers traditionally organize their time into one-hour blocks. Makers generally prefer to use time in units of half a day at least.</p>
+<p>Tips:</p>
+<ul>
+<li>Schedule necessary meetings back-to-back at the beginning or end of your work day.</li>
+<li>Defer helping others when in the middle of a focused activity.</li>
+<li>Block off hours on your calendar or schedule days like “no meeting Wednesdays”.</li>
+</ul>
+<h4 id="Limit-the-amount-of-work-in-progress"><a href="#Limit-the-amount-of-work-in-progress" class="headerlink" title="Limit the amount of work in progress"></a>Limit the amount of work in progress</h4><p>Increasing work linearly increases the likelihood of failure exponentially.</p>
+<p>Constant context switching hinders deep engagement in any one activity and reduces our overall chance of success.</p>
+<h4 id="Fight-procrastination-with-if-then-plans"><a href="#Fight-procrastination-with-if-then-plans" class="headerlink" title="Fight procrastination with if-then plans"></a>Fight procrastination with if-then plans</h4><p>Many people do not have sufficient motivation to summon the activation energy required to start a difficult task.</p>
+<p>Planning creates a link between the situation or cue and the behavior that you should follow, which follows automatically without any conscious intent when the cue triggers.</p>
+<p>Subconscious followup is important because procrastination primarily stems from a reluctance to expand the initial activation energy on a task. This reluctance leads us to rationalize why it might be better to do something easier or more enjoyable, even if it has lower leverage. When we’re in the moment, the short-term value that we get from procrastinating can often dominate our decision-making process. But when we make if-then plans and decide what to do ahead of time, we’re more likely to consider the long-term benefits associated with a task.</p>
+<p>If-then planning also can help fill the small gaps in our schedule.</p>
+<h4 id="Make-prioritization-a-habit"><a href="#Make-prioritization-a-habit" class="headerlink" title="Make prioritization a habit"></a>Make prioritization a habit</h4><p>Take general principles and iteratively adapt your own prioritization system.</p>
+<p>The actual mechanics of how your review your priorities matter less than adopting the habit of doing it.</p>
+<h2 id="Part-II-Execute-Execute-Execute"><a href="#Part-II-Execute-Execute-Execute" class="headerlink" title="Part II: Execute, Execute, Execute"></a>Part II: Execute, Execute, Execute</h2><h3 id="4-Invest-in-Iteration-Speed"><a href="#4-Invest-in-Iteration-Speed" class="headerlink" title="4. Invest in Iteration Speed"></a>4. Invest in Iteration Speed</h3><h4 id="Move-fast-to-learn-fast"><a href="#Move-fast-to-learn-fast" class="headerlink" title="Move fast to learn fast"></a>Move fast to learn fast</h4><p>Investing in iteration speed is a high-leverage decision. The faster you can iterate, the more you can learn about what works and what doesn’t work.</p>
+<p>You can build more things and try out more ideas. Not every change will produce positive value and growth. But with each iteration, you get a better sense of which changes will point you in the right direction, making your future efforts much more effective.</p>
+<h4 id="Invest-in-time-saving-tools"><a href="#Invest-in-time-saving-tools" class="headerlink" title="Invest in time-saving tools"></a>Invest in time-saving tools</h4><p>Almost all successful people write a lot of tools.</p>
+<ul>
+<li>Faster tools get used more often, therefore saving even more time.</li>
+<li>Faster tools can enable new development workflows that previously weren’t possible.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Continuous integration / deployment</li>
+<li>Incremental compilation</li>
+<li>Interactive programming, REPL</li>
+<li>Hot code reloads</li>
+</ul>
+<p>Sometimes, the time-saving tool that you built might be objectively superior to the existing one, but the switching costs discourage other engineers from actually changing their workflow and learning your tools. It’s worth investing the additional effort to lower the switching cost and to find a smoother way to integrate the tool into existing workflows.</p>
+<p>One side benefit of proving to people that your tool saves times is that it also earns you leeway with your manager and your peers to explore more ideas in the future.</p>
+<h4 id="Shorten-your-debugging-and-validation-loops"><a href="#Shorten-your-debugging-and-validation-loops" class="headerlink" title="Shorten your debugging and validation loops"></a>Shorten your debugging and validation loops</h4><p>As engineers, we can shortcut around normal system behaviors and user interactions when we’re testing your products, extending the concept of a minimal reproducible test case.</p>
+<p>When you’re fully engaged with a bug you’re testing or a new feature you’re building, the last thing you want to do is to add more work. When you’re already using a workflow that works, albeit with a few extra steps, it’s easy to get complacent and not expend the mental cycles on devising a shorter one. Don’t fall into this trap!</p>
+<p>Effective engineers have an obsessive ability to create tight feedback loops for what they’re testing.</p>
+<h4 id="Master-your-programming-environment"><a href="#Master-your-programming-environment" class="headerlink" title="Master your programming environment"></a>Master your programming environment</h4><p>Given how much time we spend in our programming environments, the more efficient we can become, the more effective we will be as engineers.</p>
+<p>Mastery is a process, not a event. As you get more comfortable, the time savings will start to build.</p>
+<p>Tips:</p>
+<ul>
+<li>Get proficient with your favorite text editor or IDE.</li>
+<li>Learn at least one productive, high-level programming language. Each minute spent writing boilerplate code for a less productive language is a minute not spent tackling the meatier aspects of a problem.</li>
+<li>Get familiar with UNIX (or Windows) shell commands.</li>
+<li>Prefer the keyboard over the mouse.</li>
+<li>Automate your manual workflows.</li>
+<li>Test out ideas on an interactive interpreter.</li>
+<li>Make it fast and easy to run just the unit tests associated with your current changes.</li>
+</ul>
+<h4 id="Don’t-ignore-non-engineering-bottlenecks"><a href="#Don’t-ignore-non-engineering-bottlenecks" class="headerlink" title="Don’t ignore non-engineering bottlenecks"></a>Don’t ignore non-engineering bottlenecks</h4><p>One common type of bottleneck is dependency on other people. Oftentimes the cause is misalignment of priorities rather than negative intentions. The sooner you acknowledge that you need to personally address this bottleneck, the more likely you’ll be able to either adapt your goals or establish consensus on the functionality’s priority.</p>
+<p>Project fail from under-communicating, not over-communicating.</p>
+<ul>
+<li>Ask for updates and commitments from team members at meetings or daily stand-ups.</li>
+<li>Periodically check in with that product manager to make sure what you need hasn’t gotten dropped.</li>
+<li>Follow up with written communication on key action items and dates that were decided in-person.</li>
+</ul>
+<p>Even if resource constraints preclude the dependency that you want from being delivered any sooner, clarifying priorities and expectations enables you to plan ahead and work through alternatives.</p>
+<p>Another common type of bottleneck is obtaining approval from a key decision maker. This kind of bottlenecks generally fall outside of an engineer’s control. Prioritize building prototypes, collecting early data, conducting user studies and so on to get preliminary project approval. Don’t defer approvals until the end.</p>
+<p>A third type of bottleneck is the review processes that accompany any project launch. Expend slightly more effort in coordination and communication.</p>
+<p>Premature optimization is the root of all evil. Find out the biggest bottlenecks and optimize them.</p>
+<h3 id="5-Measure-What-You-Want-to-Improve"><a href="#5-Measure-What-You-Want-to-Improve" class="headerlink" title="5. Measure What You Want to Improve"></a>5. Measure What You Want to Improve</h3><h4 id="Use-metrics-to-drive-progress"><a href="#Use-metrics-to-drive-progress" class="headerlink" title="Use metrics to drive progress"></a>Use metrics to drive progress</h4><p>If you can’t measure it, you can’t improve it.</p>
+<p>Good metrics accomplish a number of goals:</p>
+<ul>
+<li>They help you focus on the right things.</li>
+<li>When visualized over time, they help guard against future regressions. Engineers know the value of writing a regression test while fixing bugs: it confirms that a patch actually fixes a bug and detects if the bug re-surfaces in the future. Good metrics play a similar role, but on a system-wide scale.</li>
+<li>They can drive forward progress. Performance ratcheting: Any new change that would push latency or other key indicators past the ratchet can’t get deployed until it’s optimized, or until some other feature is improved by a counterbalancing amount.</li>
+<li>They let you measure your effectiveness over time and compare the leverage of what you’re doing against other activities you could be doing instead.</li>
+</ul>
+<h4 id="Pick-the-right-metric-to-incentivize-the-behavior-you-want"><a href="#Pick-the-right-metric-to-incentivize-the-behavior-you-want" class="headerlink" title="Pick the right metric to incentivize the behavior you want"></a>Pick the right metric to incentivize the behavior you want</h4><ul>
+<li>Hours worked per week vs. productivity per week. The marginal productivity of each additional work hour drops precipitously. Attempting to increase output by increasing hours worked per week is not sustainable.</li>
+<li>Click-through rates vs. long click-through rates. Google measure “long clicks”.</li>
+<li>Average response times vs. 95th or 99th percentile response times. The average is the right metric to use if your goal is to reduce server costs by cutting down aggregate computation time. While the slowest responses tend to reflect the experiences of your power users.</li>
+<li>Bugs fixed vs. bugs outstanding. Tracking the number of outstanding bugs can de-incentivize developers being less rigorous about testing when building new features.</li>
+<li>Registered users vs. weekly growth rate of registered users.</li>
+<li>Weekly active users vs. weekly active rate by age of cohort. The number of weekly active users doesn’t provide a complete picture. That number might increase temporarily even if product changes are actually reducing engagement over time. User could be signing up as a result of prior momentum.</li>
+</ul>
+<p>What you don’t measure is important as well. </p>
+<p>Choose metrics that 1) maximize impact, 2) are actionable, and 3) are responsive yet robust.</p>
+<ul>
+<li>Maximize impact. Align employees along a single, core metric – economic denominator. Having a single, unifying metric enables you to compare the output of disparate projects and helps your team decide how to handle externalities.</li>
+<li>Actionable. Movements can be causally explained by the team’s efforts. In contrast, vanity metrics like page views per month, total registered users, or total paying customers don’t necessarily reflect the actual quality of the team’s work.</li>
+<li>Responsive. Updates quickly enough to give feedback about whether a given change was positive or negative. It is a leading indicator of how your team is currently doing.</li>
+<li>Robust. External factors outside of the team’s control don’t lead to significant noise. Responsiveness needs to be balanced with robustness.</li>
+</ul>
+<h4 id="Instrument-everything-in-your-system"><a href="#Instrument-everything-in-your-system" class="headerlink" title="Instrument everything in your system"></a>Instrument everything in your system</h4><p>When it comes to diagnosing problems, instrumentation is critical.</p>
+<p>Adopting a mindset of instrumentation means ensuring we have a set of dashboards that surface key health metrics and that enable us to drill down to the relevant data. However, many of the questions we want to answer tend to be exploratory, since we often don’t know everything that we want to measure ahead of time. Therefore, we need to build flexible tools and abstractions that make it easy to track additional metrics.</p>
+<h4 id="Internalizing-useful-numbers"><a href="#Internalizing-useful-numbers" class="headerlink" title="Internalizing useful numbers"></a>Internalizing useful numbers</h4><p>The knowledge of useful numbers provides a valuable shortcut for knowing where to invest effort to maximize gains.</p>
+<p>Internalizing useful numbers can also help you spot anomalies in data measurements.</p>
+<p>Knowledge of useful numbers can clarify both the areas and scope for improvement.</p>
+<p>To obtain performance-related numbers, you can:</p>
+<ul>
+<li>Write small benchmarks.</li>
+<li>Talk with teams (possibly at other companies) that have worked in similar focus areas.</li>
+<li>Digging through your own historical data.</li>
+<li>Measuring parts of the data yourself.</li>
+</ul>
+<h4 id="Be-skeptical-about-data-integrity"><a href="#Be-skeptical-about-data-integrity" class="headerlink" title="Be skeptical about data integrity"></a>Be skeptical about data integrity</h4><p>The right metric can slice through office politics, philosophical biases, and product arguments, quickly resolving discussions. Unfortunately, the wrong metric can do the same thing – with disastrous results.</p>
+<p>All data can be abused. People interpret data the way they want to interpret it.</p>
+<p>Untrustworthy data that gets incorporated into decision-making processes provides negative leverage. It may lead teams to make the wrong decision or waste cognitive cycles second-guessing themselves.</p>
+<p>Our best defense against data abuse is skepticism.</p>
+<ul>
+<li>Compare the numbers with your intuition to see if they align.</li>
+<li>Try to arrive at the same data from a different direction and see if the metrics still make sense.</li>
+<li>If a metric implies some other property, try to measure the other property to make sure the conclusions are consistent.</li>
+</ul>
+<p>Metrics-related code tends to be less robust. Errors can get introduced anywhere in the data collection or processing pipeline:</p>
+<ul>
+<li>Forget to measure a particular code path if there are multiple entry points.</li>
+<li>Data can get dropped when sent over the network, leading to inaccurate ground truth data.</li>
+<li>When data from multiple sources get merged, not paying attention to how different teams interpreted the definitions, units, or standards for what ought to have been logged can introduce inconsistencies.</li>
+<li>Data visualization is hard to unit test.</li>
+</ul>
+<p>Tips:</p>
+<ul>
+<li><strong>Log data liberally, in case it turns out to be useful later on.</strong></li>
+<li>Build tools to iterate on data accuracy sooner.</li>
+<li><strong>Write end-to-end integration tests to validate your entire analytics pipeline.</strong></li>
+<li>Examine collected data sooner.</li>
+<li><strong>Cross-validate data accuracy by computing the same metric in multiple ways.</strong></li>
+<li>When a number does look off, dig into it early.</li>
+</ul>
+<h3 id="6-Validate-Your-Ideas-Early-and-Often"><a href="#6-Validate-Your-Ideas-Early-and-Often" class="headerlink" title="6. Validate Your Ideas Early and Often"></a>6. Validate Your Ideas Early and Often</h3><h4 id="Find-low-effort-ways-to-validate-your-work"><a href="#Find-low-effort-ways-to-validate-your-work" class="headerlink" title="Find low-effort ways to validate your work"></a>Find low-effort ways to validate your work</h4><p>Invest a small amount of work to gather data to validate your project assumptions and goals.</p>
+<ul>
+<li>Demystifying the riskiest areas first lets you proactively update your plan and avoid nasty surprises that might invalidate your efforts later.</li>
+<li>One way to validate your idea would be to spend 10% of your effort building a small, informative prototype.<ul>
+<li>Measuring performance on a representative workload</li>
+<li>Comparing the code footprint of the module you rewrote against the original module.</li>
+<li>Assessing the ease of adding new features.</li>
+</ul>
+</li>
+<li>Minimum viable product (MVP), the version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort. Sometimes, building an MVP requires being creative. Dropbox’s MVP was a 4-minute video.</li>
+<li>The strategy of faking the full implementation of an idea to validate whether it will work is extremely powerful. Asana used a fake signup via Google button.</li>
+</ul>
+<h4 id="Continuously-validate-product-changes-with-A-B-testing"><a href="#Continuously-validate-product-changes-with-A-B-testing" class="headerlink" title="Continuously validate product changes with A/B testing"></a>Continuously validate product changes with A/B testing</h4><p>Even if you were absolutely convinced that a certain change would improve metrics, an A/B test tells you how much better that variation actually is.</p>
+<p>A/B tests also encourage an iterative approach to product development.</p>
+<h4 id="Beware-the-one-person-team"><a href="#Beware-the-one-person-team" class="headerlink" title="Beware the one-person team"></a>Beware the one-person team</h4><p>Additional risks introduced by working on a one-person project:</p>
+<ul>
+<li>It adds friction to getting feedback. And it can be tempting to defer getting feedback until you think it’s nearly perfect.</li>
+<li>The lows of a project are more demoralizing.</li>
+<li>The highs are less motivating.</li>
+</ul>
+<p>Tips for setting up feedback channels to increase chances of success:</p>
+<ul>
+<li>Be open and receptive to feedback. Don’t adopt a defensive mindset. View feedback and criticism as opportunities for improvement.</li>
+<li>Commit code early and often.</li>
+<li>Request code reviews from thorough critics.</li>
+<li><strong>Ask to bounce ideas off your teammates. Explaining an idea to others is one of the best ways of learning it yourself. And your explanation might reveal holes in your own understanding.</strong></li>
+<li>Design the interface or API first.</li>
+<li>Send out a design document before devoting your energy to your code</li>
+<li><strong>Structure ongoing projects so that there is some shared context with your teammates.</strong></li>
+<li><strong>Solicit buy-ins for controversial features before investing too much time.</strong></li>
+</ul>
+<h4 id="Build-feedback-loops-for-your-decisions"><a href="#Build-feedback-loops-for-your-decisions" class="headerlink" title="Build feedback loops for your decisions"></a>Build feedback loops for your decisions</h4><p>Creating a feedback loop is necessary for all aspects of a job. Many of our work decisions are testable hypotheses. You may not be able to test an idea as rigorously as you could with an A/B test and ample amounts of traffic, but you can still transform what otherwise would be guesswork into informed decision-making.</p>
+<h3 id="7-Improve-Your-Project-Estimation-Skills"><a href="#7-Improve-Your-Project-Estimation-Skills" class="headerlink" title="7. Improve Your Project Estimation Skills"></a>7. Improve Your Project Estimation Skills</h3><h4 id="Use-accurate-estimates-to-drive-project-planning"><a href="#Use-accurate-estimates-to-drive-project-planning" class="headerlink" title="Use accurate estimates to drive project planning"></a>Use accurate estimates to drive project planning</h4><p>Managers and business leaders specify targets. Engineers create estimates. A good estimate does not merely reflect our best guess about how long or how much work a project will take. Instead, it’s an estimate that provides a clear enough view of the project reality to allow the project leadership to make good decisions about how to control the project to hit its targets.</p>
+<p>Project schedules often slip because we allow the target to alter the estimate. A more productive approach is to use the estimates to inform project planning. If it’s not possible to deliver all features by the target date, we could hold the date constant and deliver what is possible, or hold the feature set constant and push back the date.</p>
+<p>Tips for producing accurate estimates:</p>
+<ul>
+<li><strong>Decompose the project into granular tasks.</strong> A long estimate is a hiding place for nasty surprises. Treat it as a warning that you haven’t thought through the task thoroughly enough to understand what’s involved.</li>
+<li>Estimate based on how long tasks will take, not on how long you or someone else wants them to take. Managers challenge estimates. If you’ve made your estimates granular, you can defend them more easily.</li>
+<li>Think of estimates as probability distributions, not best-case scenarios.</li>
+<li><strong>Let the person doing the actual task make the estimate.</strong></li>
+<li><strong>Beware of anchoring bias.</strong> Avoid committing to an intial number before actually outlining the tasks involved.</li>
+<li><strong>Use multiple approaches to estimate the same task.</strong><ul>
+<li>Decompose the project into granular tasks, estimate each individual task, and create a bottom-up estimate</li>
+<li>Gather historical data on how long it took to build something similar</li>
+<li>Count the number of subsystems you have to build and estimate the average time required for each one</li>
+</ul>
+</li>
+<li><strong>Beware the mythical man-month.</strong></li>
+<li>Validate estimates against historical data. If you know that historically, you’ve tended to underestimate by 20%, then you’ll know that it’s worthwhile to scale up your overall estimate by 25%.</li>
+<li><strong>Use timeboxing to constrain tasks that can grow in scope.</strong></li>
+<li>Allow others to challenge estimates.</li>
+</ul>
+<h4 id="Allow-buffer-room-for-the-unknown-in-the-schedule"><a href="#Allow-buffer-room-for-the-unknown-in-the-schedule" class="headerlink" title="Allow buffer room for the unknown in the schedule"></a>Allow buffer room for the unknown in the schedule</h4><p>Acknowledge that the longer a project is, the more likely that an unexpected problem will arise.</p>
+<ul>
+<li>Leave buffer room for unknowns</li>
+<li>Separate estimated work time from calendar time.<ul>
+<li>An 8-hour workday doesn’t actually provide 8 hours of working time on a project.</li>
+<li>The effect of interruptions is further compounded when schedules slip.</li>
+</ul>
+</li>
+<li>Be clear that a certain schedule is contingent on some person spending a certain amount of time each week on the project.</li>
+<li>Factor in competing time investments.</li>
+</ul>
+<h4 id="Define-specific-project-goals-and-measurable-milestones"><a href="#Define-specific-project-goals-and-measurable-milestones" class="headerlink" title="Define specific project goals and measurable milestones"></a>Define specific project goals and measurable milestones</h4><p>What frequently causes a project to slip is a fuzzy understanding of what constitutes success.</p>
+<p>Setting a project goal produces two concrete benefits:</p>
+<ul>
+<li>A well-defined goal provides an important filter for separating the must-haves from the nice-to-haves in the task list.</li>
+<li>It builds clarity and alignment across key stakeholders. It’s very important to understand what the goal is, what your constraints are, and to call out the assumptions that you’re making.</li>
+</ul>
+<p>Building alignment also helps team members be more accountable for local tradeoffs that might hurt global goals.</p>
+<p>Define specific goals to reduce risk and efficiently allocate time, and outline milestones to track progress.</p>
+<h4 id="Reduce-risk-early"><a href="#Reduce-risk-early" class="headerlink" title="Reduce risk early"></a>Reduce risk early</h4><p>As engineers, we like to build things. This tendency can bias us toward making visible progress on the easier parts of a project that we understand well. We then convince ourselves that we’re right on track, because the cost of riskier areas hasn’t yet materialized.</p>
+<p>Effectively executing on a project means minimizing the risk that a deadline might slip and surfacing unexpected issues as early as possible.</p>
+<p>Tackling the riskiest areas first helps us identify any estimation errors associated with them. The goal from the beginning should be to maximize learning and minimize risk, so that we can adjust our project plan if necessary.</p>
+<p>Examples:</p>
+<ul>
+<li>When switching to a new technology, build a small-scale end-to-end prototype.</li>
+<li>When adopting a new backend infrastructure, gain an early systematic understanding of its performance and failure characteristics.</li>
+<li>When considering a new design to improve application performance, benchmark core pieces of code.</li>
+</ul>
+<p>One effective strategy to reduce integration risk is to build end-to-end scaffolding and do system testing earlier. Front-loading the integration work provides a number of benefits:</p>
+<ul>
+<li>It forces you to think more about the necessary glue between different pieces and how they interact, which can help refine the integration estimates and reduce project risk.</li>
+<li>If something breaks the end-to-end system during development, you can identify and fix it along the way, while dealing with much less code complexity, rather than scrambling to tackle it at the end.</li>
+<li>It amortizes the cost of integration throughout the development process, which helps build a stronger awareness of how much integration work is actually left.</li>
+</ul>
+<p>Our initial project estimates will exhibit high variance because we’re operating under uncertainty and imperfect information. As we gain more information and revise our estimates, the variance narrows. By shifting the work that can take highly variable amounts of time to earlier in the process, we reduce risk and give ourselves more time and information to make effective project plans.</p>
+<h4 id="Approach-rewrite-projects-with-extreme-caution"><a href="#Approach-rewrite-projects-with-extreme-caution" class="headerlink" title="Approach rewrite projects with extreme caution"></a>Approach rewrite projects with extreme caution</h4><p>Trying to rewrite stuff from scratch – that’s the cardinal sin.</p>
+<p>Rewrite projects are particularly troublesome because:</p>
+<ul>
+<li>They share the same project planning and estimation difficulties.</li>
+<li>We tend to underestimate them more drastically due to a false sense of familiarity.</li>
+<li>It’s easy and tempting to bundle additional improvements into a rewrite.</li>
+<li>When a rewrite is ongoing, any new features or improvements must either be added to the rewritten version or they must be duplicated.</li>
+</ul>
+<p>The second system is the most dangerous system a man ever designs.</p>
+<p>Engineers should use a series of incremental, behavior-preserving transformations to refactor code. Rewriting a system incrementally is a high-leverage activity. It provides additional flexibility at each step to shift to other work that might be higher-leverage.</p>
+<p>Sometimes, doing an incremental rewrite might not be possible. The next best approach is to break the rewrite down into separate, targeted phases.</p>
+<h4 id="Know-the-limits-of-overtime"><a href="#Know-the-limits-of-overtime" class="headerlink" title="Know the limits of overtime"></a>Know the limits of overtime</h4><p>Don’t sprint in the middle of a marathon.</p>
+<p>Reasons why working more hours doesn’t necessarily mean hitting the launch date:</p>
+<ul>
+<li>Hourly productivity decreases with additional hours worked.</li>
+<li>You’re probably more behind schedule than you think.</li>
+<li>Additional hours can burn out team members.</li>
+<li>Working extra hours can hurt team dynamics.</li>
+<li><strong>Communication overhead increases as the deadline looms.</strong></li>
+<li><strong>The sprint toward the deadline incentivizes technical debts.</strong></li>
+</ul>
+<p>Tips for increasing the probability that overtime will actually accomplish your goals:</p>
+<ul>
+<li>Making sure everyone understands the primary causes for why the timeline has slipped thus far.</li>
+<li>Developing a realistic and revised version of the project plan and timeline.</li>
+<li>Being ready to abandon the sprint if you slip even further from the revised timeline.</li>
+</ul>
+<h2 id="Part-III-Build-Long-Term-Value"><a href="#Part-III-Build-Long-Term-Value" class="headerlink" title="Part III: Build Long-Term Value"></a>Part III: Build Long-Term Value</h2><h3 id="8-Balance-Quality-with-Pragmatism"><a href="#8-Balance-Quality-with-Pragmatism" class="headerlink" title="8. Balance Quality with Pragmatism"></a>8. Balance Quality with Pragmatism</h3><h4 id="Establish-a-culture-of-reviewing-code"><a href="#Establish-a-culture-of-reviewing-code" class="headerlink" title="Establish a culture of reviewing code"></a>Establish a culture of reviewing code</h4><p>The benefits of code reviews:</p>
+<ul>
+<li>Catching bugs or design shortcomings early.</li>
+<li>Increasing accountability for code changes.</li>
+<li>Positive modeling of how to write good code.</li>
+<li>Sharing working knowledge of the codebase.</li>
+<li>Increasing long-term agility.</li>
+</ul>
+<p>Fundamentally, there’s a tradeoff between the additional quality that code reviews can provide and the short-term productivity win from spending that time to add value in other ways.</p>
+<p>Code reviews can be structured in different ways to reduce their overhead while still maintaining their benefits. Experiment to find the right balance of code reviews that work for you and your team.</p>
+<h4 id="Manage-complexity-through-abstraction"><a href="#Manage-complexity-through-abstraction" class="headerlink" title="Manage complexity through abstraction"></a>Manage complexity through abstraction</h4><p>How the right abstraction increases engineering productivity:</p>
+<ul>
+<li><strong>It reduces the complexity of the original problem into easier-to-understand primitives.</strong></li>
+<li>It reduces future application maintenance and makes it easier to apply future improvements.</li>
+<li>It solves the hard problems once and enables the solution to be used multiple times.</li>
+</ul>
+<p>When we’re looking for the right tool for the job and we find it easier to build something from scratch rather than incorporate an existing abstraction intended for our use case, that’s a signal that the abstraction might be ill-designed.</p>
+<p>Bad abstractions aren’t just wasted effort; they’re also liabilities that slow down future development.</p>
+<p>Good abstractions should be:</p>
+<ul>
+<li>Easy to learn</li>
+<li><strong>Easy to use even without documentation</strong></li>
+<li><strong>Hard to misuse</strong></li>
+<li>Sufficiently powerful to satisfy requirements</li>
+<li>Easy to extend</li>
+<li>Appropriate to the audience</li>
+</ul>
+<h4 id="Scale-code-quality-with-automated-testing"><a href="#Scale-code-quality-with-automated-testing" class="headerlink" title="Scale code quality with automated testing"></a>Scale code quality with automated testing</h4><p>Tests allow engineers to make changes, especially large refactorings ,with significantly higher confidence. When code does break, automated tests help to efficiently identify who’s accountable.</p>
+<p>Tests offer executable documentation of what cases the original author considered and how to invoke the code.</p>
+<p>The extent to which you should automate testing again boils down to a matter of tradeoffs. The inflection point came when a simple unit test visibly started to save time.</p>
+<h4 id="Manage-technical-debt"><a href="#Manage-technical-debt" class="headerlink" title="Manage technical debt"></a>Manage technical debt</h4><p>Since our initial understanding of problems always will be incomplete, incurring a little debt is unavoidable. The key to being a more effective engineer is to incur technical debt when it’s necessary to get things done for a deadline, but to pay off that debt periodically.</p>
+<h3 id="9-Minimize-Operational-Burden"><a href="#9-Minimize-Operational-Burden" class="headerlink" title="9. Minimize Operational Burden"></a>9. Minimize Operational Burden</h3><h4 id="Do-the-simple-thing-first"><a href="#Do-the-simple-thing-first" class="headerlink" title="Do the simple thing first"></a>Do the simple thing first</h4><p>Simple solutions impose a lower operational burden because they’re easier to understand, maintain and modify.</p>
+<p>Having too complex of an architecture imposes a maintenance cost in a few ways:</p>
+<ul>
+<li><strong>Engineering expertise gets splintered across multiple systems.</strong> Every system has its own unique sets of properties and failure modes that must be discovered, understood, and mastered.</li>
+<li>Increased complexity introduces more potential single points of failure.</li>
+<li>New engineers face a steeper learning curve when learning and understanding the new systems.</li>
+<li><strong>Effort towards improving abstractions, libraries, and tools get diluted across the different systems.</strong></li>
+</ul>
+<p>People often say, “Use the right tool for the job” – but that can also increase the number of moving parts. Does the complexity of having more parts outweigh the benefits of simplicity through standardization?</p>
+<h4 id="Fail-fast-to-pinpoint-the-source-of-errors"><a href="#Fail-fast-to-pinpoint-the-source-of-errors" class="headerlink" title="Fail fast to pinpoint the source of errors"></a>Fail fast to pinpoint the source of errors</h4><p>By failing fast, we can more quickly and effectively surface and address issues.</p>
+<p>Examples:</p>
+<ul>
+<li>Crashing at startup time when encountering configuration errors.</li>
+<li><strong>Validating software inputs, particularly if they won’t be consumed until much later.</strong></li>
+<li>Bubbling up an error from an external service that you don’t know how to handle, rather than swallowing it.</li>
+<li>Throwing an exception as soon as possible when certain modifications to a data structure, like a collection, would render dependent data structures, like an iterator, unusable.</li>
+<li>Throwing an exception if key data structures have been corrupted rather than propagating that corruption further within the system.</li>
+<li><strong>Asserting that key invariants hold before of after complex logic flows and attaching sufficiently descriptive failure messages.</strong></li>
+<li>Alerting engineers about any invalid or inconsistent program state as early as possible.</li>
+</ul>
+<p>You can take a hybrid approach: use fail-fast techniques to surface issues immediately and as close to the actual source of error as possible; and complement them with a global exception handler that reports the error to engineers while failing gracefully to the end user.</p>
+<h4 id="Relentlessly-automate-mechanical-tasks"><a href="#Relentlessly-automate-mechanical-tasks" class="headerlink" title="Relentlessly automate mechanical tasks"></a>Relentlessly automate mechanical tasks</h4><p>Engineers automate less frequently than they should, for a few reasons:</p>
+<ul>
+<li>They don’t have the time right now.</li>
+<li><strong>They suffer from the tragedy of the commons</strong>, in which individuals act rationally according to their own self-interest but contrary to the group’s best long-term interests. When manual work is spread across multiple engineers and teams, it reduces the incentive of any individual engineer to spend the time to automate.</li>
+<li>They lack familiarity with automation tools.</li>
+<li><strong>They underestimate the future frequency of the task.</strong></li>
+<li><strong>They don’t internalize the time savings over a long time horizon.</strong></li>
+</ul>
+<p>Automation can produce diminishing returns as you move from automating mechanics to automating decision-making.</p>
+<h4 id="Aim-for-idempotence-and-reentrancy"><a href="#Aim-for-idempotence-and-reentrancy" class="headerlink" title="Aim for idempotence and reentrancy"></a>Aim for idempotence and reentrancy</h4><p>Idempotence offers another benefit that many effective engineers take advantage of: the ability to run infrequent processes at a more frequent rate than strictly necessary, to expose problems sooner.</p>
+<p>Running batch processes more frequently also allows you to handle assorted glitches transparently. A system check that runs every 5 to 10 minutes might raise spurious alarms because a temporary network glitch causes it to fail, but running the check every 60 seconds and only raising an alarm on consecutive failures dramatically decreases the chances of false positives. Many temporary failures might resolve themselves with in a minute, reducing the need for manual intervention.</p>
+<h4 id="Hone-your-ability-to-respond-and-recover-quickly"><a href="#Hone-your-ability-to-respond-and-recover-quickly" class="headerlink" title="Hone your ability to respond and recover quickly"></a>Hone your ability to respond and recover quickly</h4><p>The best defense against major unexpected failures is to fail often.</p>
+<p>It’s important to focus on uptime and quality, but as we go down the list of probable failure modes or known bugs, we will find that our time investments produce diminishing returns. No matter how careful we are, unexpected failures will always occur. At some point, it becomes higher leverage to focus our time and energy on our ability to recover quickly than on preventing failures in the first place.</p>
+<p>We can script for success and shift our decision-making away from high-stakes and high-pressure situations and into more controlled environments.</p>
+<h3 id="10-Invest-in-Your-Team’s-Growth"><a href="#10-Invest-in-Your-Team’s-Growth" class="headerlink" title="10. Invest in Your Team’s Growth"></a>10. Invest in Your Team’s Growth</h3><h4 id="Help-the-people-around-you-succeed"><a href="#Help-the-people-around-you-succeed" class="headerlink" title="Help the people around you succeed"></a>Help the people around you succeed</h4><p>The higher you climb up the engineering ladder, the more your effectiveness will be measured not by your individual contributions but by your impact on the people around you. Thinking early in your career about how to help your coworkers succeed instills the right habits that in turn will lead to your own success.</p>
+<p>Your career success depends largely on your company and team’s success. You get more credit than you deserve for being part of a successful company, and less credit than you deserve for being part of an unsuccessful company.</p>
+<h4 id="Make-hiring-a-priority"><a href="#Make-hiring-a-priority" class="headerlink" title="Make hiring a priority"></a>Make hiring a priority</h4><p>A good interview process achieves two goals:</p>
+<ul>
+<li>It screens for the type of people likely to do well on the team</li>
+<li>It gets candidates excited about the team</li>
+</ul>
+<p>Tips for improving your interview process:</p>
+<ul>
+<li>Take time with your team to identify which qualities in a potential teammate you care about the most.</li>
+<li>Periodically meet to discuss how effective the current recruiting and interview process are at finding new hires who succeed on the team.</li>
+<li><strong>Design interview problems with multiple layers of difficulty that you can tailor to the candidate’s ability.</strong></li>
+<li>Control the interview pace to maintain a high signal-to-noise ratio.</li>
+<li><strong>Scan for red flags by rapidly firing short-answer questions.</strong></li>
+<li>Periodically shadow or pair with another team member during interviews.</li>
+</ul>
+<h4 id="Invest-in-onboarding-and-mentoring"><a href="#Invest-in-onboarding-and-mentoring" class="headerlink" title="Invest in onboarding and mentoring"></a>Invest in onboarding and mentoring</h4><p>A good initial experience influences an engineer’s perception of the engineering culture, shapes her ability to deliver future impact, and directs her learning and activities according to team priorities.</p>
+<p>Quora’s onboarding program:</p>
+<ul>
+<li>Codelabs: why a core abstraction was designed and how it’s used.</li>
+<li>Onboarding talks: codebase, site architecture, development tools, engineering expectations and values, key focus areas.</li>
+<li>Mentorship.</li>
+<li>Starter tasks.</li>
+</ul>
+<h4 id="Share-ownership-of-code"><a href="#Share-ownership-of-code" class="headerlink" title="Share ownership of code"></a>Share ownership of code</h4><p>There’s a common misconception that being the sole engineer responsible for a project increases your value. When you’re the bottleneck for a project, you lose your flexibility to work on other things.</p>
+<p>Tips for increase shared ownership:</p>
+<ul>
+<li>Avoid one-person teams.</li>
+<li>Review each other’s code and software designs.</li>
+<li>Rotate different types of tasks and responsibilities across the team.</li>
+<li>Keep code readable and code quality high.</li>
+<li>Present tech talks on software decisions and architecture.</li>
+<li>Document your software, either through high-level design documents or in code-level comments.</li>
+<li><strong>Document the complex workflows or non-obvious workarounds necessary for you to get things done.</strong></li>
+<li>Invest time in teaching and mentor other team members.</li>
+</ul>
+<h4 id="Build-collective-wisdom-through-post-mortems"><a href="#Build-collective-wisdom-through-post-mortems" class="headerlink" title="Build collective wisdom through post-mortems"></a>Build collective wisdom through post-mortems</h4><p>Meet and conduct a detailed post-mortem after a site outage, a high-priority bug, or some other infrastructure issue. Try doing the same healthy retrospection to projects and launches.</p>
+<p>Ultimately, compiling team lessons is predicated upon honest conversation – and holding an honest conversation about a project can be uncomfortable. It requires aligning behind a common goal of improving the product or team, and not focusing on where to assign blame. It requires being open and receptive to feedback, with the goal of building collective wisdom around what went wrong and what could’ve been done better.</p>
+<h4 id="Build-a-great-engineering-culture"><a href="#Build-a-great-engineering-culture" class="headerlink" title="Build a great engineering culture"></a>Build a great engineering culture</h4><p>Great engineering cultures:</p>
+<ul>
+<li>Optimize for iteration speed.</li>
+<li>Push relentlessly towards automation.</li>
+<li>Build the right software abstractions.</li>
+<li>Focus on high code quality by using code reviews.</li>
+<li>Maintain a respectful work environment.</li>
+<li>Build shared ownership of code.</li>
+<li>Invest in automated testing.</li>
+<li>Allot experimentation time.</li>
+<li>Foster a culture of learning and continuous improvements.</li>
+<li>Hire the best.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Buy me an Asahi beer :)</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/donate-alipay.jpg" alt="Linghao Zhang Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/last-5-years/" rel="next" title="过去这五年">
+                <i class="fa fa-chevron-left"></i> 过去这五年
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/liqi-community-plan/" rel="prev" title="创造者和他们的工具——利器社群计划">
+                创造者和他们的工具——利器社群计划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/asuka.png"
+                alt="Linghao Zhang" />
+            
+              <p class="site-author-name" itemprop="name">Linghao Zhang</p>
+              <p class="site-description motion-element" itemprop="description">Creating and Distilling Knowledge</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hi@linghao.io" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dnc1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/linghaozh" target="_blank" title="LinkedIn">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://t.me/linghao" target="_blank" title="Telegram">
+                      
+                        <i class="fa fa-fw fa-telegram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/instante_42" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.instagram.com/instante_42" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shud.in/about/" title="Shu Ding" target="_blank">Shu Ding</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://dsdshcym.github.io/blog/" title="Yiming Chen" target="_blank">Yiming Chen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://taineleau.me/" title="Danlu Chen" target="_blank">Danlu Chen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://endle.github.io/" title="Zhenbo Li" target="_blank">Zhenbo Li</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-I-Adopt-the-Right-Mindsets"><span class="nav-number">1.</span> <span class="nav-text">Part I: Adopt the Right Mindsets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Focus-on-High-Leverage-Activities"><span class="nav-number">1.1.</span> <span class="nav-text">1. Focus on High-Leverage Activities</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-leverage-to-measure-your-engineering-effectiveness"><span class="nav-number">1.1.1.</span> <span class="nav-text">Use leverage to measure your engineering effectiveness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Systematically-increase-the-leverage-of-your-time"><span class="nav-number">1.1.2.</span> <span class="nav-text">Systematically increase the leverage of your time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Focus-your-effort-on-leverage-points"><span class="nav-number">1.1.3.</span> <span class="nav-text">Focus your effort on leverage points</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Optimize-for-Learning"><span class="nav-number">1.2.</span> <span class="nav-text">2. Optimize for Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Adopt-a-growth-mindset"><span class="nav-number">1.2.1.</span> <span class="nav-text">Adopt a growth mindset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Invest-in-your-learning-rate"><span class="nav-number">1.2.2.</span> <span class="nav-text">Invest in your learning rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Seek-work-environments-conducive-to-learning"><span class="nav-number">1.2.3.</span> <span class="nav-text">Seek work environments conducive to learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Capitalize-on-opportunities-on-the-job-to-develop-new-skills"><span class="nav-number">1.2.4.</span> <span class="nav-text">Capitalize on opportunities on the job to develop new skills</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Always-be-learning-even-when-outside-of-the-workplace"><span class="nav-number">1.2.5.</span> <span class="nav-text">Always be learning, even when outside of the workplace</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Prioritize-Regularly"><span class="nav-number">1.3.</span> <span class="nav-text">3. Prioritize Regularly</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Track-and-review-to-dos-in-a-single-easily-accessible-list"><span class="nav-number">1.3.1.</span> <span class="nav-text">Track and review to-dos in a single, easily accessible list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Focus-on-what-directly-produces-value"><span class="nav-number">1.3.2.</span> <span class="nav-text">Focus on what directly produces value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Focus-on-the-important-and-non-urgent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Focus on the important and non-urgent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Protect-your-schedule"><span class="nav-number">1.3.4.</span> <span class="nav-text">Protect your schedule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Limit-the-amount-of-work-in-progress"><span class="nav-number">1.3.5.</span> <span class="nav-text">Limit the amount of work in progress</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fight-procrastination-with-if-then-plans"><span class="nav-number">1.3.6.</span> <span class="nav-text">Fight procrastination with if-then plans</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Make-prioritization-a-habit"><span class="nav-number">1.3.7.</span> <span class="nav-text">Make prioritization a habit</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-II-Execute-Execute-Execute"><span class="nav-number">2.</span> <span class="nav-text">Part II: Execute, Execute, Execute</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Invest-in-Iteration-Speed"><span class="nav-number">2.1.</span> <span class="nav-text">4. Invest in Iteration Speed</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Move-fast-to-learn-fast"><span class="nav-number">2.1.1.</span> <span class="nav-text">Move fast to learn fast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Invest-in-time-saving-tools"><span class="nav-number">2.1.2.</span> <span class="nav-text">Invest in time-saving tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shorten-your-debugging-and-validation-loops"><span class="nav-number">2.1.3.</span> <span class="nav-text">Shorten your debugging and validation loops</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Master-your-programming-environment"><span class="nav-number">2.1.4.</span> <span class="nav-text">Master your programming environment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Don’t-ignore-non-engineering-bottlenecks"><span class="nav-number">2.1.5.</span> <span class="nav-text">Don’t ignore non-engineering bottlenecks</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Measure-What-You-Want-to-Improve"><span class="nav-number">2.2.</span> <span class="nav-text">5. Measure What You Want to Improve</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-metrics-to-drive-progress"><span class="nav-number">2.2.1.</span> <span class="nav-text">Use metrics to drive progress</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pick-the-right-metric-to-incentivize-the-behavior-you-want"><span class="nav-number">2.2.2.</span> <span class="nav-text">Pick the right metric to incentivize the behavior you want</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Instrument-everything-in-your-system"><span class="nav-number">2.2.3.</span> <span class="nav-text">Instrument everything in your system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Internalizing-useful-numbers"><span class="nav-number">2.2.4.</span> <span class="nav-text">Internalizing useful numbers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Be-skeptical-about-data-integrity"><span class="nav-number">2.2.5.</span> <span class="nav-text">Be skeptical about data integrity</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Validate-Your-Ideas-Early-and-Often"><span class="nav-number">2.3.</span> <span class="nav-text">6. Validate Your Ideas Early and Often</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Find-low-effort-ways-to-validate-your-work"><span class="nav-number">2.3.1.</span> <span class="nav-text">Find low-effort ways to validate your work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Continuously-validate-product-changes-with-A-B-testing"><span class="nav-number">2.3.2.</span> <span class="nav-text">Continuously validate product changes with A/B testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Beware-the-one-person-team"><span class="nav-number">2.3.3.</span> <span class="nav-text">Beware the one-person team</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-feedback-loops-for-your-decisions"><span class="nav-number">2.3.4.</span> <span class="nav-text">Build feedback loops for your decisions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Improve-Your-Project-Estimation-Skills"><span class="nav-number">2.4.</span> <span class="nav-text">7. Improve Your Project Estimation Skills</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-accurate-estimates-to-drive-project-planning"><span class="nav-number">2.4.1.</span> <span class="nav-text">Use accurate estimates to drive project planning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Allow-buffer-room-for-the-unknown-in-the-schedule"><span class="nav-number">2.4.2.</span> <span class="nav-text">Allow buffer room for the unknown in the schedule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Define-specific-project-goals-and-measurable-milestones"><span class="nav-number">2.4.3.</span> <span class="nav-text">Define specific project goals and measurable milestones</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reduce-risk-early"><span class="nav-number">2.4.4.</span> <span class="nav-text">Reduce risk early</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Approach-rewrite-projects-with-extreme-caution"><span class="nav-number">2.4.5.</span> <span class="nav-text">Approach rewrite projects with extreme caution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Know-the-limits-of-overtime"><span class="nav-number">2.4.6.</span> <span class="nav-text">Know the limits of overtime</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-III-Build-Long-Term-Value"><span class="nav-number">3.</span> <span class="nav-text">Part III: Build Long-Term Value</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Balance-Quality-with-Pragmatism"><span class="nav-number">3.1.</span> <span class="nav-text">8. Balance Quality with Pragmatism</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Establish-a-culture-of-reviewing-code"><span class="nav-number">3.1.1.</span> <span class="nav-text">Establish a culture of reviewing code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Manage-complexity-through-abstraction"><span class="nav-number">3.1.2.</span> <span class="nav-text">Manage complexity through abstraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scale-code-quality-with-automated-testing"><span class="nav-number">3.1.3.</span> <span class="nav-text">Scale code quality with automated testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Manage-technical-debt"><span class="nav-number">3.1.4.</span> <span class="nav-text">Manage technical debt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Minimize-Operational-Burden"><span class="nav-number">3.2.</span> <span class="nav-text">9. Minimize Operational Burden</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-the-simple-thing-first"><span class="nav-number">3.2.1.</span> <span class="nav-text">Do the simple thing first</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fail-fast-to-pinpoint-the-source-of-errors"><span class="nav-number">3.2.2.</span> <span class="nav-text">Fail fast to pinpoint the source of errors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Relentlessly-automate-mechanical-tasks"><span class="nav-number">3.2.3.</span> <span class="nav-text">Relentlessly automate mechanical tasks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Aim-for-idempotence-and-reentrancy"><span class="nav-number">3.2.4.</span> <span class="nav-text">Aim for idempotence and reentrancy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hone-your-ability-to-respond-and-recover-quickly"><span class="nav-number">3.2.5.</span> <span class="nav-text">Hone your ability to respond and recover quickly</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Invest-in-Your-Team’s-Growth"><span class="nav-number">3.3.</span> <span class="nav-text">10. Invest in Your Team’s Growth</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Help-the-people-around-you-succeed"><span class="nav-number">3.3.1.</span> <span class="nav-text">Help the people around you succeed</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Make-hiring-a-priority"><span class="nav-number">3.3.2.</span> <span class="nav-text">Make hiring a priority</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Invest-in-onboarding-and-mentoring"><span class="nav-number">3.3.3.</span> <span class="nav-text">Invest in onboarding and mentoring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Share-ownership-of-code"><span class="nav-number">3.3.4.</span> <span class="nav-text">Share ownership of code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-collective-wisdom-through-post-mortems"><span class="nav-number">3.3.5.</span> <span class="nav-text">Build collective wisdom through post-mortems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-a-great-engineering-culture"><span class="nav-number">3.3.6.</span> <span class="nav-text">Build a great engineering culture</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linghao Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://wille-lhz.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://dnc1994.com/2018/10/notes-the-effective-engineer/';
+          this.page.identifier = '2018/10/notes-the-effective-engineer/';
+          this.page.title = '[Notes] The Effective Engineer';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wille-lhz.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
